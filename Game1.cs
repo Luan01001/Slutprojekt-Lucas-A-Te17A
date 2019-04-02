@@ -7,6 +7,7 @@ namespace Breakout_spel_Lucas_A_slutprojekt
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
+    /// testtastdat
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
