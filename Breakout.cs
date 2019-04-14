@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using BreakoutLucasA;
+using System.Collections.Generic;
 using System;
 
 namespace BreakoutLucasA
@@ -18,10 +19,15 @@ namespace BreakoutLucasA
         Texture2D boll;
         Vector2 bollpos = new Vector2(400, 200);
         Rectangle bollhitbox, paddelhitbox;
-        
+
+        // en ny lista med block
+        List<Block> Brickor;
 
         int skärmbredd;
         int skärmhöjd;
+        int blockhöjd = 30;
+        int blockbredd = 100;
+        int blockrader = 6;
         
 
         Random slumppos = new Random();
@@ -65,10 +71,30 @@ namespace BreakoutLucasA
             hastighet.X = 4;
             hastighet.Y = 4;
 
+            Brickor = new List<Block>();
+
             SlumpLoad();
+            BlockSkapare();
            
         }
 
+        public void BlockSkapare()
+        {
+              // de olika kolumnerna som blocken kommer vara i
+            for (int i = 0; i < skärmbredd / blockbredd; i++)
+            {
+                //// de olika raderna som blocken kommer vara i
+                for (int j = 1; j < blockrader + 1; j++)
+                {
+                    Brickor.Add(new Block(this, GraphicsDevice, spriteBatch, blockbredd, blockhöjd, i * blockbredd + i, j * blockhöjd + j));
+                }
+            }
+
+            foreach (var Block in Brickor)
+            {
+                Components.Add(Block);
+            }
+        }
        
         protected override void UnloadContent()
         {
