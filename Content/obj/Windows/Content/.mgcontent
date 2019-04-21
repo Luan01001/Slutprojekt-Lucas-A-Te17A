@@ -4,9 +4,9 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/lucke/source/repos/BreakoutLucasA/BreakoutLucasA/Content/bakgrund.jpg</File>
-    <File>C:/Users/lucke/source/repos/BreakoutLucasA/BreakoutLucasA/Content/boll.png</File>
-    <File>C:/Users/lucke/source/repos/BreakoutLucasA/BreakoutLucasA/Content/paddel.png</File>
+    <File>C:/Users/lucke/Desktop/PRO Slutprojekt Lucas A/Content/bakgrund.jpg</File>
+    <File>C:/Users/lucke/Desktop/PRO Slutprojekt Lucas A/Content/boll.png</File>
+    <File>C:/Users/lucke/Desktop/PRO Slutprojekt Lucas A/Content/paddel.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

@@ -24,3 +24,29 @@ C:\Users\lucke\source\repos\BreakoutLucasA\BreakoutLucasA\obj\x86\Debug\Breakout
 C:\Users\lucke\source\repos\BreakoutLucasA\BreakoutLucasA\bin\Windows\x86\Debug\Content\boll.xnb
 C:\Users\lucke\source\repos\BreakoutLucasA\BreakoutLucasA\bin\Windows\x86\Debug\Content\paddel.xnb
 C:\Users\lucke\source\repos\BreakoutLucasA\BreakoutLucasA\bin\Windows\x86\Debug\Content\bakgrund.xnb
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\bin\Windows\x86\Debug\Content\bakgrund.xnb
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\bin\Windows\x86\Debug\Content\boll.xnb
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\bin\Windows\x86\Debug\Content\paddel.xnb
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\bin\Windows\x86\Debug\BreakoutLucasA.exe
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\bin\Windows\x86\Debug\BreakoutLucasA.pdb
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\bin\Windows\x86\Debug\SharpDX.dll
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\bin\Windows\x86\Debug\SharpDX.xml
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\obj\x86\Debug\BreakoutLucasA.csprojAssemblyReference.cache
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\obj\x86\Debug\BreakoutLucasA.csproj.CoreCompileInputs.cache
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\obj\x86\Debug\BreakoutLucasA.csproj.CopyComplete
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\obj\x86\Debug\BreakoutLucasA.exe
+C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\obj\x86\Debug\BreakoutLucasA.pdb

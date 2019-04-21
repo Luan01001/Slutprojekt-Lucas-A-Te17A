@@ -96,6 +96,8 @@ namespace BreakoutLucasA
             }
         }
        
+
+
         protected override void UnloadContent()
         {
            
@@ -140,6 +142,8 @@ namespace BreakoutLucasA
             {
                  hastighet.Y = -hastighet.Y;
             }
+            
+            //avslutar spelet om bollen åker under paddeln
             
 
             bollpos.X = bollpos.X + hastighet.X;

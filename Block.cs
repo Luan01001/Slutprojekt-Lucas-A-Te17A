@@ -29,7 +29,7 @@ namespace BreakoutLucasA
             this.bredd = bredd;
             this.posX = posX;
             this.posY = posY;
-
+            
             block1 = new Texture2D(graphics, 1, 1);
             block1.SetData(new Color[] { Color.White });        
         }
