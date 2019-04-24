@@ -15,34 +15,39 @@ namespace BreakoutLucasA
         Texture2D bakgrund;
         Vector2 bakgrundpos = new Vector2(0, 0);
         Texture2D paddel;
-        Vector2 paddelpos = new Vector2(440, 660);
+        Vector2 paddelpos = new Vector2(900, 660);
         Texture2D boll;
-        Vector2 bollpos = new Vector2(400, 200);
+        Vector2 bollpos = new Vector2(945, 300);
         Rectangle bollhitbox, paddelhitbox;
+        SpriteFont Text;
+        
 
         // en ny lista med block
         List<Block> Brickor;
 
         int skärmbredd;
         int skärmhöjd;
-        int blockhöjd = 30;
-        int blockbredd = 100;
-        int blockrader = 6;
-        
-
-        Random slumppos = new Random();
+        int blockhöjd = 15;
+        int blockbredd = 50;
+        int blockrader = 12;
+        int poäng = 0; // startpoäng
+        int underkant = 690; // y koordinat, om bollen rör där så stängs spelet ner
 
         Vector2 hastighet;
 
+        Random slumppos = new Random(); //random funktion som gör att bollen slumpmässigt åker åt olika håll när den spawnar
 
+        
 
+    
+        
         public Breakout()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
             // ändrar storlek på rutan
-            graphics.PreferredBackBufferWidth = 1080;
+            graphics.PreferredBackBufferWidth = 1880;
             graphics.PreferredBackBufferHeight = 720;
             graphics.ApplyChanges();
         }
@@ -75,7 +80,8 @@ namespace BreakoutLucasA
 
             SlumpLoad();
             BlockSkapare();
-           
+
+            Text = Content.Load<SpriteFont>("Ubuntu32"); // laddar in text
         }
 
         public void BlockSkapare()
@@ -86,7 +92,7 @@ namespace BreakoutLucasA
                 //// de olika raderna som blocken kommer vara i
                 for (int j = 1; j < blockrader + 1; j++)
                 {
-                    Brickor.Add(new Block(this, GraphicsDevice, spriteBatch, blockbredd, blockhöjd, i * blockbredd + i, j * blockhöjd + j));
+                    Brickor.Add(new Block(this, GraphicsDevice, spriteBatch, blockbredd, blockhöjd, i * blockbredd + i, j * blockhöjd + j)); // sätter egenskaperna på blocket
                 }
             }
 
@@ -96,8 +102,6 @@ namespace BreakoutLucasA
             }
         }
        
-
-
         protected override void UnloadContent()
         {
            
@@ -106,11 +110,12 @@ namespace BreakoutLucasA
        
         protected override void Update(GameTime gameTime)
         {
+            // flyttar paddeln i x-led när piltangenterna <- och -> trycks när
             KeyboardState kstate = Keyboard.GetState();
             if (kstate.IsKeyDown(Keys.Right)) 
-                paddelpos.X += 4;   
+                paddelpos.X += 8;   
             if (kstate.IsKeyDown(Keys.Left))
-                paddelpos.X -= 4;
+                paddelpos.X -= 8;
 
             // hindrar paddeln att åka utanför fönstret
             if (paddelpos.X > Window.ClientBounds.Width - paddel.Width)
@@ -126,28 +131,50 @@ namespace BreakoutLucasA
             if (bollpos.Y <= 0)
                 hastighet.Y = -hastighet.Y;
 
-            // gör så att bollen studsar mot väggarna (högersidan och undersidan)
-            // undersidan är tillfällig, det gör det dock lättare för att testa spelet
+            // gör så att bollen studsar mot väggarna (högersidan)
             if (bollpos.X + boll.Width >= skärmbredd)
                 hastighet.X = -hastighet.X;
-            if (bollpos.Y + boll.Height >= skärmhöjd)
-                hastighet.Y = -hastighet.Y;
+            
 
             //skapar hitboxarna till bollen och paddeln
-            bollhitbox = new Rectangle((int)bollpos.X, (int) bollpos.Y, 26, 26);
-            paddelhitbox = new Rectangle((int)paddelpos.X, (int) paddelpos.Y , 155, 26);
+            bollhitbox = new Rectangle((int)bollpos.X, (int) bollpos.Y, 22, 22);
+            paddelhitbox = new Rectangle((int)paddelpos.X, (int) paddelpos.Y , 114, 26);
+
+            // ökar hastigheten när spelaren får ett visst antal poäng
+            if (poäng > 2000)
+            {   
+                if (hastighet.Y == 3)
+                {
+                    hastighet.Y = 5;
+                }
+            }
 
             // kollisionen, skickar tillbaka bollen i motsatt riktning
             if (paddelhitbox.Intersects(bollhitbox))
             {
                  hastighet.Y = -hastighet.Y;
             }
-            
-            //avslutar spelet om bollen åker under paddeln
-            
 
+            // avlutar spelet om bollen hamnar under paddeln
+            if(bollpos.Y > underkant)
+            {
+                Exit();
+            }       
+            
+ 
             bollpos.X = bollpos.X + hastighet.X;
             bollpos.Y = bollpos.Y + hastighet.Y;
+
+            for (int i = 0; i < Brickor.Count; i++)
+            {
+                if (bollhitbox.Intersects(Brickor[i].getbrickHitbox())) // om bollen nuddar en bricka så vänder den samt blocket försvinner, samt spelaren får 100 poäng
+                {
+                    Brickor[i].flyttablock();
+                    hastighet.Y *= -1;
+                    poäng += 100;
+                }
+            }
+     
 
             base.Update(gameTime);
         }
@@ -180,9 +207,15 @@ namespace BreakoutLucasA
             spriteBatch.Draw(bakgrund, bakgrundpos, Color.White);
             spriteBatch.Draw(paddel, paddelpos, Color.White);
             spriteBatch.Draw(boll, bollpos, Color.White);
-            spriteBatch.End();
+            spriteBatch.DrawString(Text, "Score: "+poäng.ToString(), new Vector2(100, 600), Color.White); // la till poäng (texten och psoition)
          
+            // varje bricka ritas ut med hjälp av draw funktionen i Block klassen, samt att position uppdateras här (för att spara plats)
+            foreach (var item in Brickor)
+            {
+                item.Draw(spriteBatch);
+            }
 
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }

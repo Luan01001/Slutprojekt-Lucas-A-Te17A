@@ -19,7 +19,7 @@ namespace BreakoutLucasA
         int höjd;
         int posX;
         int posY;
-
+        Rectangle hitbox;
 
         public Block(Game game, GraphicsDevice graphics, SpriteBatch spriteBatch, int bredd, int höjd, int posX, int posY) : base(game)
         {
@@ -31,14 +31,21 @@ namespace BreakoutLucasA
             this.posY = posY;
             
             block1 = new Texture2D(graphics, 1, 1);
-            block1.SetData(new Color[] { Color.White });        
+            block1.SetData(new Color[] { Color.White });
+            hitbox = new Rectangle(posX, posY, bredd, höjd);
         }
+        
+        public Rectangle getbrickHitbox() { return hitbox; }
 
-        public override void Draw(GameTime gameTime)
+        // flyttar rutorna utanför skärmen (gör att blocken försvinner)
+        public void flyttablock() { this.posX = 3000; hitbox = new Rectangle(posX, posY, bredd, höjd); }
+
+
+        public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin();
-            spriteBatch.Draw(block1, new Rectangle(posX, posY, bredd, höjd), Color.Purple);
-            spriteBatch.End();
+           
+            spriteBatch.Draw(block1, hitbox, Color.Purple); // ritar ut lila block
+          
         }
     }
 }

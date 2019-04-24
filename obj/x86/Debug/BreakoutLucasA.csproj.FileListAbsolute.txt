@@ -50,3 +50,4 @@ C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\obj\x86\Debug\BreakoutLucasA.cspr
 C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\obj\x86\Debug\BreakoutLucasA.csproj.CopyComplete
 C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\obj\x86\Debug\BreakoutLucasA.exe
 C:\Users\lucke\Desktop\PRO Slutprojekt Lucas A\obj\x86\Debug\BreakoutLucasA.pdb
+C:\Users\lucke\source\repos\BreakoutLucasA\BreakoutLucasA\bin\Windows\x86\Debug\Content\Ubuntu32.xnb

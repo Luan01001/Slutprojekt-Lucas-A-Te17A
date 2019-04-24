@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/lucke/Desktop/PRO Slutprojekt Lucas A/Content/boll.png</SourceFile>
-  <SourceTime>2019-04-07T10:49:13.1770165+02:00</SourceTime>
-  <DestFile>C:/Users/lucke/Desktop/PRO Slutprojekt Lucas A/Content/bin/Windows/Content/boll.xnb</DestFile>
-  <DestTime>2019-04-21T13:20:55.1256928+02:00</DestTime>
+  <SourceFile>C:/Users/lucke/source/repos/BreakoutLucasA/BreakoutLucasA/Content/boll.png</SourceFile>
+  <SourceTime>2019-04-24T20:12:57.0717243+02:00</SourceTime>
+  <DestFile>C:/Users/lucke/source/repos/BreakoutLucasA/BreakoutLucasA/Content/bin/Windows/Content/boll.xnb</DestFile>
+  <DestTime>2019-04-24T20:13:01.4022743+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T17:35:54+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
