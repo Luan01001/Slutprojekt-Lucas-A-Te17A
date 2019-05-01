@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Block.cs" />
     <Compile Include="Breakout.cs" />
+    <Compile Include="Poäng.cs" />
+    <Compile Include="PoängManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

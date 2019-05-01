@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using BreakoutLucasA;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace BreakoutLucasA
 {
@@ -20,6 +21,10 @@ namespace BreakoutLucasA
         Vector2 bollpos = new Vector2(945, 300);
         Rectangle bollhitbox, paddelhitbox;
         SpriteFont Text;
+
+        private int _poäng;
+
+        private PoängManager _poängManager;
         
 
         // en ny lista med block
@@ -80,6 +85,8 @@ namespace BreakoutLucasA
 
             SlumpLoad();
             BlockSkapare();
+
+            _poängManager = PoängManager.Load();
 
             Text = Content.Load<SpriteFont>("Ubuntu32"); // laddar in text
         }
@@ -158,8 +165,18 @@ namespace BreakoutLucasA
             // avlutar spelet om bollen hamnar under paddeln
             if(bollpos.Y > underkant)
             {
+                _poängManager.Add(new BreakoutLucasA.Poäng()
+                {
+                    Spelare = "Test",
+                    Värde = _poäng,
+                }
+               );
+                PoängManager.Save(_poängManager);
+
                 Exit();
             }       
+
+           
             
  
             bollpos.X = bollpos.X + hastighet.X;
@@ -171,10 +188,10 @@ namespace BreakoutLucasA
                 {
                     Brickor[i].flyttablock();
                     hastighet.Y *= -1;
-                    poäng += 100;
+                    _poäng += 100;
                 }
             }
-     
+            
 
             base.Update(gameTime);
         }
@@ -207,8 +224,9 @@ namespace BreakoutLucasA
             spriteBatch.Draw(bakgrund, bakgrundpos, Color.White);
             spriteBatch.Draw(paddel, paddelpos, Color.White);
             spriteBatch.Draw(boll, bollpos, Color.White);
-            spriteBatch.DrawString(Text, "Score: "+poäng.ToString(), new Vector2(100, 600), Color.White); // la till poäng (texten och psoition)
-         
+            spriteBatch.DrawString(Text, "Score: "+_poäng.ToString(), new Vector2(100, 700), Color.White); // la till poäng (texten och position)
+            spriteBatch.DrawString(Text, "Highscore:\n " + string.Join("\n", _poängManager.Highscore.Select(c => c.Spelare + ": "+ c.Värde).ToArray()), new Vector2(100, 400), Color.White); // ritar ut highscore och genom att använda string.Join så bryts raden för varje highscore nivå.
+
             // varje bricka ritas ut med hjälp av draw funktionen i Block klassen, samt att position uppdateras här (för att spara plats)
             foreach (var item in Brickor)
             {
