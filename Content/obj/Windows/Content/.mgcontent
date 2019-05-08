@@ -4,12 +4,14 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/lucke/source/repos/BreakoutLucasA/BreakoutLucasA/Content/bakgrund.jpg</File>
-    <File>C:/Users/lucke/source/repos/BreakoutLucasA/BreakoutLucasA/Content/boll.png</File>
-    <File>C:/Users/lucke/source/repos/BreakoutLucasA/BreakoutLucasA/Content/paddel.png</File>
-    <File>C:/Users/lucke/source/repos/BreakoutLucasA/BreakoutLucasA/Content/Ubuntu32.spritefont</File>
+    <File>C:/Users/banan/Desktop/Slutprojekt-Lucas-A-Te17A-master/Content/bakgrund.jpg</File>
+    <File>C:/Users/banan/Desktop/Slutprojekt-Lucas-A-Te17A-master/Content/boll.png</File>
+    <File>C:/Users/banan/Desktop/Slutprojekt-Lucas-A-Te17A-master/Content/paddel.png</File>
+    <File>C:/Users/banan/Desktop/Slutprojekt-Lucas-A-Te17A-master/Content/paddelStor.png</File>
+    <File>C:/Users/banan/Desktop/Slutprojekt-Lucas-A-Te17A-master/Content/Ubuntu32.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

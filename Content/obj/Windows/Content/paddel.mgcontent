@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/lucke/source/repos/BreakoutLucasA/BreakoutLucasA/Content/paddel.png</SourceFile>
-  <SourceTime>2019-04-24T20:12:15.15697+02:00</SourceTime>
-  <DestFile>C:/Users/lucke/source/repos/BreakoutLucasA/BreakoutLucasA/Content/bin/Windows/Content/paddel.xnb</DestFile>
-  <DestTime>2019-04-24T20:13:01.4122349+02:00</DestTime>
+  <SourceFile>C:/Users/banan/Desktop/Slutprojekt-Lucas-A-Te17A-master/Content/paddel.png</SourceFile>
+  <SourceTime>2019-05-01T16:22:35+02:00</SourceTime>
+  <DestFile>C:/Users/banan/Desktop/Slutprojekt-Lucas-A-Te17A-master/Content/bin/Windows/Content/paddel.xnb</DestFile>
+  <DestTime>2019-05-08T19:34:44.5866782+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T17:35:54+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

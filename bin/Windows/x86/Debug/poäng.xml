@@ -17,7 +17,27 @@
     <Värde>1100</Värde>
   </Poäng>
   <Poäng>
+    <Spelare>Test</Spelare>
+    <Värde>400</Värde>
+  </Poäng>
+  <Poäng>
+    <Spelare>Test</Spelare>
+    <Värde>100</Värde>
+  </Poäng>
+  <Poäng>
+    <Spelare>Test</Spelare>
+    <Värde>100</Värde>
+  </Poäng>
+  <Poäng>
     <Spelare>John</Spelare>
+    <Värde>0</Värde>
+  </Poäng>
+  <Poäng>
+    <Spelare>Test</Spelare>
+    <Värde>0</Värde>
+  </Poäng>
+  <Poäng>
+    <Spelare>Test</Spelare>
     <Värde>0</Värde>
   </Poäng>
   <Poäng>
