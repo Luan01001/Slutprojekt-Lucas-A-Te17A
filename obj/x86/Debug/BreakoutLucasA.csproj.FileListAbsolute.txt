@@ -79,3 +79,10 @@ C:\Users\banan\Desktop\Slutprojekt-Lucas-A-Te17A-master\obj\x86\Debug\BreakoutLu
 C:\Users\banan\Desktop\Slutprojekt-Lucas-A-Te17A-master\obj\x86\Debug\BreakoutLucasA.exe
 C:\Users\banan\Desktop\Slutprojekt-Lucas-A-Te17A-master\obj\x86\Debug\BreakoutLucasA.pdb
 C:\Users\banan\Desktop\Slutprojekt-Lucas-A-Te17A-master\bin\Windows\x86\Debug\Content\paddelStor.xnb
+C:\Users\lucke\source\repos\BreakoutLucasA\BreakoutLucasA\bin\Windows\x86\Debug\Content\paddelStor.xnb
+C:\Users\lucke\source\repos\BreakoutLucasA\BreakoutLucasA\bin\Windows\x86\Debug\Content\bakgrund2.xnb
+C:\Users\lucke\source\repos\BreakoutLucasA\BreakoutLucasA\bin\Windows\x86\Debug\Content\bakgrund3.xnb
+C:\Users\lucke\source\repos\BreakoutLucasA\BreakoutLucasA\bin\Windows\x86\Debug\Content\bakgrund4.xnb
+C:\Users\lucke\source\repos\BreakoutLucasA\BreakoutLucasA\bin\Windows\x86\Debug\Content\bakgrund5.xnb
+C:\Users\lucke\source\repos\BreakoutLucasA\BreakoutLucasA\bin\Windows\x86\Debug\Content\bakgrund6.xnb
+C:\Users\lucke\source\repos\BreakoutLucasA\BreakoutLucasA\bin\Windows\x86\Debug\Content\endscreen.xnb

@@ -2,19 +2,23 @@
 <ArrayOfPoäng xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Poäng>
     <Spelare>Test</Spelare>
-    <Värde>1300</Värde>
-  </Poäng>
-  <Poäng>
-    <Spelare>John</Spelare>
-    <Värde>1100</Värde>
+    <Värde>2000</Värde>
   </Poäng>
   <Poäng>
     <Spelare>Test</Spelare>
-    <Värde>1100</Värde>
+    <Värde>1700</Värde>
   </Poäng>
   <Poäng>
     <Spelare>Test</Spelare>
-    <Värde>1100</Värde>
+    <Värde>1400</Värde>
+  </Poäng>
+  <Poäng>
+    <Spelare>Test</Spelare>
+    <Värde>1000</Värde>
+  </Poäng>
+  <Poäng>
+    <Spelare>Test</Spelare>
+    <Värde>700</Värde>
   </Poäng>
   <Poäng>
     <Spelare>Test</Spelare>
@@ -22,6 +26,18 @@
   </Poäng>
   <Poäng>
     <Spelare>Test</Spelare>
+    <Värde>400</Värde>
+  </Poäng>
+  <Poäng>
+    <Spelare>Test</Spelare>
+    <Värde>400</Värde>
+  </Poäng>
+  <Poäng>
+    <Spelare>Test</Spelare>
+    <Värde>300</Värde>
+  </Poäng>
+  <Poäng>
+    <Spelare>Test</Spelare>
     <Värde>100</Värde>
   </Poäng>
   <Poäng>
@@ -29,7 +45,55 @@
     <Värde>100</Värde>
   </Poäng>
   <Poäng>
+    <Spelare>Test</Spelare>
+    <Värde>100</Värde>
+  </Poäng>
+  <Poäng>
+    <Spelare>Test</Spelare>
+    <Värde>0</Värde>
+  </Poäng>
+  <Poäng>
+    <Spelare>Test</Spelare>
+    <Värde>0</Värde>
+  </Poäng>
+  <Poäng>
+    <Spelare>Test</Spelare>
+    <Värde>0</Värde>
+  </Poäng>
+  <Poäng>
+    <Spelare>Test</Spelare>
+    <Värde>0</Värde>
+  </Poäng>
+  <Poäng>
+    <Spelare>Test</Spelare>
+    <Värde>0</Värde>
+  </Poäng>
+  <Poäng>
+    <Spelare>Test</Spelare>
+    <Värde>0</Värde>
+  </Poäng>
+  <Poäng>
+    <Spelare>Test</Spelare>
+    <Värde>0</Värde>
+  </Poäng>
+  <Poäng>
     <Spelare>John</Spelare>
+    <Värde>0</Värde>
+  </Poäng>
+  <Poäng>
+    <Spelare>Test</Spelare>
+    <Värde>0</Värde>
+  </Poäng>
+  <Poäng>
+    <Spelare>Test</Spelare>
+    <Värde>0</Värde>
+  </Poäng>
+  <Poäng>
+    <Spelare>Test</Spelare>
+    <Värde>0</Värde>
+  </Poäng>
+  <Poäng>
+    <Spelare>Test</Spelare>
     <Värde>0</Värde>
   </Poäng>
   <Poäng>
