@@ -10,11 +10,11 @@ namespace BreakoutLucasA
 {
     public class PoängManager
     {
-        private static string _fileName = "poäng.xml"; 
+        private static string _fileName = "poäng.xml";  // highscoresen sparas i "bin" mappen, alltså poängen sparas lokalt på datorn
+         
+        public List<Poäng> Highscore { get; private set; } //lista för alla highscores (top 10)
 
-        public List<Poäng> Highscore { get; private set; }
-
-        public List<Poäng> Poängs { get; private set; }
+        public List<Poäng> Poängs { get; private set; } //lista för alla poäng som sparas i xml filen
 
         public PoängManager()
             : this(new List<Poäng>())
@@ -57,6 +57,10 @@ namespace BreakoutLucasA
             Highscore = Poängs.Take(10).ToList(); //Gör att highscorelistan innehåller de 10 bästa resultaten
         }
 
+
+        /// <summary>
+        /// Serializer används för att lagra data (high scores i denna situationen)
+        /// </summary>
         public static void Save(PoängManager poängManager)
         {
             using (var writer = new StreamWriter(new FileStream(_fileName, FileMode.Create)))

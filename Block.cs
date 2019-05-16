@@ -8,13 +8,16 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace BreakoutLucasA
 {
-    // klass för blocken
+    /// <summary>
+    /// Klass som hanterar blocken som genereras in i spelet
+    /// </summary>
     class Block : DrawableGameComponent
     {
         SpriteBatch spriteBatch;
         GraphicsDevice graphics;
         Texture2D block1;
 
+        //variabler för blocken
         int bredd;
         int höjd;
         int posX;
@@ -30,9 +33,9 @@ namespace BreakoutLucasA
             this.posX = posX;
             this.posY = posY;
             
-            block1 = new Texture2D(graphics, 1, 1);
+            block1 = new Texture2D(graphics, 1, 1); // skapar block1 texture
             block1.SetData(new Color[] { Color.White });
-            hitbox = new Rectangle(posX, posY, bredd, höjd);
+            hitbox = new Rectangle(posX, posY, bredd, höjd); // skapar hitboxen för ett block
         }
         
         public Rectangle getbrickHitbox() { return hitbox; }

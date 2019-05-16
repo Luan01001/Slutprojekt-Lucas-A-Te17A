@@ -7,6 +7,9 @@ using System.Linq;
 
 namespace BreakoutLucasA {
 
+    /// <summary>
+    /// Viktigaste klassen
+    /// </summary>
     public class Breakout : Game {
 
         Random r = new Random();
@@ -19,16 +22,33 @@ namespace BreakoutLucasA {
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
+        //bakgrundernas, gameover & endscreen texture
         Texture2D bakgrund;
+        Texture2D bakgrund2;
+        Texture2D bakgrund3;
+        Texture2D bakgrund4;
+        Texture2D bakgrund5;
+        Texture2D bakgrund6;
+        Texture2D gameover;
+        Texture2D endscreen;
+
         Vector2 bakgrundpos = new Vector2(0, 0);
         Texture2D paddel;
-        Vector2 paddelpos = new Vector2(900, 660);
+        Vector2 paddelpos = new Vector2(900, 660); //paddelns startposition
         Texture2D boll;
-        Vector2 bollpos = new Vector2(945, 300);
+        Vector2 bollpos = new Vector2(945, 300); // bollens startposition
         Rectangle bollhitbox, paddelhitbox;
         SpriteFont Text;
 
+        // Poäng och Nivå
         private int _poäng;
+        int poängFörNästaNivå = 7400;
+        int nivå = 1;
+        
+
+        
+        int liv = 3;
 
         private PoängManager _poängManager;
 
@@ -36,12 +56,16 @@ namespace BreakoutLucasA {
         // en ny lista med block
         List<Block> Brickor;
 
+        //skärmkonfiguration
         int skärmbredd;
         int skärmhöjd;
+
+        //Block
         int blockhöjd = 15;
         int blockbredd = 50;
         int blockrader = 12;
-        int poäng = 0; // startpoäng
+
+     
         int underkant = 690; // y koordinat, om bollen rör där så stängs spelet ner
 
         Vector2 hastighet;
@@ -56,7 +80,7 @@ namespace BreakoutLucasA {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            // ändrar storlek på rutan
+            // ändrar storlek på spelfönstret
             graphics.PreferredBackBufferWidth = 1880;
             graphics.PreferredBackBufferHeight = 720;
             graphics.ApplyChanges();
@@ -75,17 +99,24 @@ namespace BreakoutLucasA {
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
             bakgrund = Content.Load<Texture2D>("bakgrund");
-            paddel = Content.Load<Texture2D>("paddel");
-            boll = Content.Load<Texture2D>("boll");
-            paddelStor = Content.Load<Texture2D>("paddelStor");
+            bakgrund2 = Content.Load<Texture2D>("bakgrund2");
+            bakgrund3 = Content.Load<Texture2D>("bakgrund3");
+            bakgrund4 = Content.Load<Texture2D>("bakgrund4");
+            bakgrund5 = Content.Load<Texture2D>("bakgrund5");
+            bakgrund6 = Content.Load<Texture2D>("bakgrund6");
+            gameover = Content.Load<Texture2D>("gameover");
+            endscreen = Content.Load<Texture2D>("endscreen"); // slutbilden som visas när spelaren har förstört alla block
 
+            paddel = Content.Load<Texture2D>("paddel"); //paddeln som spelaren styr
+            boll = Content.Load<Texture2D>("boll"); // bollen 
+            paddelStor = Content.Load<Texture2D>("paddelStor"); // bonuseffekten (stor paddel)
+
+            // sätter skärmens höjd och bredd i en variabel så att det blir lättare att använda för att bland annat hindra paddeln från att åka utanför spelfönstret
             skärmbredd = GraphicsDevice.Viewport.Width;
             skärmhöjd = GraphicsDevice.Viewport.Height;
 
-            hastighet.X = 4;
-            hastighet.Y = 4;
 
-            Brickor = new List<Block>();
+            Brickor = new List<Block>(); //lista med block
 
             SlumpLoad();
             BlockSkapare();
@@ -100,7 +131,7 @@ namespace BreakoutLucasA {
             for (int i = 0; i < skärmbredd / blockbredd; i++) {
                 //// de olika raderna som blocken kommer vara i
                 for (int j = 1; j < blockrader + 1; j++) {
-                    Brickor.Add(new Block(this, GraphicsDevice, spriteBatch, blockbredd, blockhöjd, i * blockbredd + i, j * blockhöjd + j)); // sätter egenskaperna på blocket
+                    Brickor.Add(new Block(this, GraphicsDevice, spriteBatch, blockbredd, blockhöjd, i * blockbredd + i, j * blockhöjd + j)); // sätter egenskaperna för blocket
                 }
             }
 
@@ -115,7 +146,7 @@ namespace BreakoutLucasA {
 
 
         protected override void Update(GameTime gameTime) {
-            // flyttar paddeln i x-led när piltangenterna <- och -> trycks när
+            // flyttar paddeln i x-led när piltangenterna <- och -> trycks ner
             KeyboardState kstate = Keyboard.GetState();
             if (kstate.IsKeyDown(Keys.Right))
                 paddelpos.X += 8;
@@ -123,11 +154,16 @@ namespace BreakoutLucasA {
                 paddelpos.X -= 8;
 
             // hindrar paddeln att åka utanför fönstret
-            if (paddelpos.X > Window.ClientBounds.Width - paddel.Width)
+            if (paddelpos.X > Window.ClientBounds.Width - paddel.Width && !SkaHaStorPaddel)
                 paddelpos.X = Window.ClientBounds.Width - paddel.Width;
             if (paddelpos.X < 0)
                 paddelpos.X = 0;
 
+            // förhindrar den stora paddeln att åka utanför fönstret
+            if (paddelpos.X > 1700 && SkaHaStorPaddel)
+            {
+                paddelpos.X = 1700;
+            }
 
 
             // gör så att bollen studsar mot väggarna (vänstersida och ovansidan)
@@ -144,7 +180,7 @@ namespace BreakoutLucasA {
             //skapar hitboxarna till bollen och paddeln
             bollhitbox = new Rectangle((int)bollpos.X, (int)bollpos.Y, 22, 22);
 
-            //ändrar hitboxen på paddlen beroende på om spelaren har fått "powerup" sor paddle
+            //ändrar hitboxen på paddlen beroende på om spelaren har fått "powerup" stor paddle
             if (SkaHaStorPaddel) {
                 paddelhitbox = new Rectangle((int)paddelpos.X, (int)paddelpos.Y, 180, 26);
             } else {
@@ -152,12 +188,7 @@ namespace BreakoutLucasA {
             }
 
 
-            // ökar hastigheten när spelaren får ett visst antal poäng
-            if (poäng > 2000) {
-                if (hastighet.Y == 3) {
-                    hastighet.Y = 5;
-                }
-            }
+
 
             // kollisionen, skickar tillbaka bollen i motsatt riktning
             if (paddelhitbox.Intersects(bollhitbox)) {
@@ -173,10 +204,23 @@ namespace BreakoutLucasA {
                );
                 PoängManager.Save(_poängManager);
 
-                Exit();
+                liv--;
+
+             
+
+                if (liv > 0)
+                {
+                    // Om spelaren har fler liv än 0 så återställs bollens pos och fart
+                    SlumpLoad();
+
+                }
+                
             }
-
-
+             // om spelaren har 0 liv kvar och F trycks ner så avslutas spelet
+            if (liv == 0 && kstate.IsKeyDown(Keys.F))
+                {
+                    Exit();
+                }
 
 
             bollpos.X = bollpos.X + hastighet.X;
@@ -199,7 +243,7 @@ namespace BreakoutLucasA {
             //Kolla om spelaren ska ha stor paddle.
             if (gameTime.TotalGameTime.TotalSeconds < Störreplattatills) {
                 SkaHaStorPaddel = true;
-                //Räkna ut tid kvar för att visa till spelaren.
+                //Räknar ut tid kvar för att visa till spelaren.
                 TidKvaravStorPaddle = Math.Round(Störreplattatills - gameTime.TotalGameTime.TotalSeconds);
             } else {
                 SkaHaStorPaddel = false;
@@ -208,11 +252,25 @@ namespace BreakoutLucasA {
 
 
 
+            //Har hand om nivå system
+            if(_poäng >= poängFörNästaNivå)
+            {
+                //sätter ytterligate poäng som behövs fär nästa nivå.
+                poängFörNästaNivå = _poäng + 7400;               
+                nivå++;
+                //Öka bollens hastighet för att öka svårighetsgraden för varje nivå. öka beroende på vilket håll den redan åker emot
+                if (hastighet.X > 0) { hastighet.X++; } else { hastighet.X--; }
+                if (hastighet.Y > 0) { hastighet.Y++; } else { hastighet.Y--; }
+            }
+              
+            
 
             base.Update(gameTime);
         }
 
         void SlumpLoad() {
+            bollpos = new Vector2(945, 300);
+            paddelpos = new Vector2(900, 660);
             // gör att bollen genereras åt olika håll
             int random = slumppos.Next(0, 2);
             //riktningar:
@@ -233,9 +291,57 @@ namespace BreakoutLucasA {
         protected override void Draw(GameTime gameTime) {
             GraphicsDevice.Clear(Color.Purple);
             spriteBatch.Begin();
+            // ritar ut en ny bakgrund för varje ny nivå som uppnås
             spriteBatch.Draw(bakgrund, bakgrundpos, Color.White);
+            if (nivå == 2)
+            {
+                spriteBatch.Draw(bakgrund2, bakgrundpos, Color.White); 
+            }
+            if (nivå == 3)
+            {
+                spriteBatch.Draw(bakgrund3, bakgrundpos, Color.White);
+            }
+            if (nivå == 4)
+            {
+                spriteBatch.Draw(bakgrund4, bakgrundpos, Color.White);
+            }
+            if (nivå == 5)
+            {
+                spriteBatch.Draw(bakgrund5, bakgrundpos, Color.White);
+            }
+            if (nivå == 6)
+            {
+                spriteBatch.Draw(bakgrund6, bakgrundpos, Color.White);
+            }
+            if (liv == 0)
+            {
+                spriteBatch.Draw(gameover, bakgrundpos, Color.White);
+                // flyttar bort paddeln och bollen från skärmen
+                paddelpos = new Vector2(3000, 5000);
+                bollpos = new Vector2(3000, 400);
 
-            // Rita ut stor respektive liten paddle så att den är lika sotr som hitboxen
+                // bollen stannar
+                hastighet.X = 0;
+                hastighet.Y = 0;
+            }
+
+            if (_poäng >= 44400) // när spelaren förstör alla block så klarar spelaren spelet, paddeln och bollen försvinner och stannar.
+            {
+                spriteBatch.Draw(endscreen, bakgrundpos, Color.White); //ritar ut slutskärmsbilden
+
+                // flyttar bort paddeln och bollen från skärmen
+                paddelpos = new Vector2(3000, 5000);
+                bollpos = new Vector2(3000, 400);
+     
+                // bollen stannar
+                hastighet.X = 0; 
+                hastighet.Y = 0;
+            }
+
+
+
+
+            // Rita ut stor respektive liten paddle så att den är lika stor som hitboxen
             if (SkaHaStorPaddel) {
                 spriteBatch.Draw(paddelStor, paddelpos, Color.White);
             } else {
@@ -243,9 +349,11 @@ namespace BreakoutLucasA {
             }
 
 
-            spriteBatch.Draw(boll, bollpos, Color.White);
+            spriteBatch.Draw(boll, bollpos, Color.White); // ritar ut bollen
             spriteBatch.DrawString(Text, "Score: " + _poäng.ToString(), new Vector2(100, 700), Color.White); // la till poäng (texten och position)
-            spriteBatch.DrawString(Text, "Tid kvar av stor paddle: " + TidKvaravStorPaddle, new Vector2(200, 700), Color.White); // skriv ut tid kvar tills sor paddle försvinner
+            spriteBatch.DrawString(Text, "Tid kvar av stor paddle: " + TidKvaravStorPaddle, new Vector2(200, 700), Color.White); // skriv ut tid kvar tills stor paddle försvinner
+            spriteBatch.DrawString(Text, "Niva: " + nivå, new Vector2(400, 700), Color.White); //Skriver ut nivå
+            spriteBatch.DrawString(Text, "Liv: " + liv, new Vector2(500, 700), Color.White); //Skriver ut liv
             spriteBatch.DrawString(Text, "Highscore:\n " + string.Join("\n", _poängManager.Highscore.Select(c => c.Spelare + ": " + c.Värde).ToArray()), new Vector2(100, 400), Color.White); // ritar ut highscore och genom att använda string.Join så bryts raden för varje highscore nivå.
 
             // varje bricka ritas ut med hjälp av draw funktionen i Block klassen, samt att position uppdateras här (för att spara plats)
